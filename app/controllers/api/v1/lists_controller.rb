@@ -1,6 +1,6 @@
 class Api::V1::ListsController < ApplicationController
   def index
-    lists = List.order(updated_at: :desc)
+    lists = List.order(:id)
     render json: lists
   end
 
