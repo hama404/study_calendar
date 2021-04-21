@@ -25,7 +25,6 @@ const Todo = (props) => {
               <List
                 list={list}
                 changeColorCode={props.changeColorCode}
-                toggleCompleted={props.toggleCompleted}
                 updateList={props.updateList}
                 deleteList={props.deleteList} />
               </li>
