@@ -29,19 +29,32 @@ const List = (props) => {
   }
 
   const changeCompleted = () => {
-    props.toggleCompleted(props.list);
+    const data = {
+      ...props.list,
+      completed: !props.list.completed,
+    }
+    props.updateList(props.list.id, data);
   }
 
   const handleUpdate = () => {
-    props.updateList();
+    const min = Number(num)
+    const rgb = props.changeColorCode(hex)
+    const data = {
+      ...props.list,
+      name: text,
+      time: min,
+      color: rgb,
+    }
+    props.updateList(props.list.id, data);
+    setEditing(false);
   }
   const handleDelete = () => {
-    props.deleteList(props.list);
+    props.deleteList(props.list.id);
   }
 
   const diplayTime = (time) => {
     const hour = Math.floor(time / 60);
-    const min = time % 60;
+    const min = ("0" + time % 60).slice(-2);
     return (hour ? hour + 'h' : '') + min + 'm';
   }
 
@@ -53,6 +66,7 @@ const List = (props) => {
   };
 
   useEffect(() => {
+    setEditing(false);
     setText(props.list.name);
     setNum(String(props.list.time));
     setHex(props.changeColorCode(props.list.color));

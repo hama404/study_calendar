@@ -1,24 +1,49 @@
-# README
+# STUDY CALENDAR
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+自分の勉強時間を可視化するアプリです。  
+勉強の予定を立てることができます。
 
-Things you may want to cover:
+Ruby on Rails & REACT の Web アプリケーションです。  
+フロントを REACT で作成して、SPA 化しました。  
+(Ruby on Rails & REACT, CRUD, SPA)
 
-* Ruby version
+## URL
 
-* System dependencies
+[54.168.99.68](http://54.168.99.68/)
 
-* Configuration
+## 使用技術
 
-* Database creation
+- Ruby 2.7.0
 
-* Database initialization
+- Ruby on Rails 6.1.3
 
-* How to run the test suite
+  - Web API
+  - Webpacker
 
-* Services (job queues, cache servers, search engines, etc.)
+- REACT
 
-* Deployment instructions
+  - React Hooks
+  - axios
+  - react-router-dom
+  - chart.js
+  - react-calendar
 
-* ...
+- MariaDB
+
+- Nginx
+
+- Unicorn
+
+- AWS
+
+  - VPC
+  - EC2
+
+## 実装した機能
+
+- 勉強時間投稿、編集、削除
+
+- REACT
+
+  - カレンダー表示
+  - 円グラフ

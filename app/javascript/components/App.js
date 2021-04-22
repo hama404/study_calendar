@@ -26,22 +26,6 @@ const App = () => {
     setDate(newDate)
   }
 
-  const toggleCompleted = (list) => {
-    const data = {
-      ...list,
-      completed: !list.completed,
-    }
-    axios.patch(`/api/v1/lists/${list.id}`, data)
-    .then(resp => {
-      setLists((prevLists) => {
-        return prevLists.map((value) => {
-          if (value.id === list.id) return resp.data ;
-          return value;
-        });
-      })
-    })
-  }
-
   const addList = (data) => {
     axios.post('/api/v1/lists', data)
     .then(resp => {
@@ -58,18 +42,27 @@ const App = () => {
     })
   }
 
-  const updateList = () => {
-    console.log("update")
+  const updateList = (id, data) => {
+    axios.patch(`/api/v1/lists/${id}`, data)
+    .then(resp => {
+      console.log(resp)
+      setLists((prevLists) => {
+        return prevLists.map((value) => {
+          if (value.id === id) return resp.data ;
+          return value;
+        })
+      })
+    })
   }
 
-  const deleteList = (list) => {
+  const deleteList = (id) => {
     const sure = window.confirm('Are you sure?');
     if (sure) {
-      axios.delete(`/api/v1/lists/${list.id}`)
+      axios.delete(`/api/v1/lists/${id}`)
       .then(resp => {
         console.log(resp)
         setLists((prevLists) => {
-          return prevLists.filter(value => value.id !== list.id)
+          return prevLists.filter(value => value.id !== id)
         })
       })
       .catch(e => {
@@ -140,7 +133,6 @@ const App = () => {
               dateLists={dateLists}
               changeDate={changeDate}
               changeColorCode={changeColorCode}
-              toggleCompleted={toggleCompleted}
               updateList={updateList}
               deleteList={deleteList} />
           }/>
