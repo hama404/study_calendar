@@ -6,11 +6,14 @@ import First from './First';
 import Home from './Home';
 import Todo from './Todo';
 import FormDialog from './FormDialog';
+import Login from './devise/Login';
+import Signup from './devise/Signup';
 
 const App = () => {
   const [open, setOpen] = useState(false)
   const [date, setDate] = useState(new Date())
   const [lists, setLists] = useState([])
+  const [user, setUser] = useState({})
 
   const handleOpen = () => {
     setOpen(true)
@@ -70,6 +73,22 @@ const App = () => {
       });
     }
   }
+  
+  const signup = (data) => {
+    const user = {
+      email: data.email,
+      password: data.password
+    }
+    setUser(user)
+  }
+
+  const login = (data) => {
+    setUser(data)
+  }
+  
+  const signout = () => {
+    setUser({})
+  }
 
   const makeKey = (date) => {
     const y = date.getFullYear();
@@ -117,6 +136,8 @@ const App = () => {
   return (
     <div className="wrapper">
       <Header
+        user={user}
+        signout={signout}
         handleOpen={handleOpen} />
       <div className="container">
         <Switch>
@@ -135,6 +156,14 @@ const App = () => {
               changeColorCode={changeColorCode}
               updateList={updateList}
               deleteList={deleteList} />
+          }/>
+          <Route exact path='/login' render={() => 
+            <Login
+              login={login} />
+          }/>
+          <Route exact path='/signup' render={() => 
+            <Signup
+              signup={signup} />
           }/>
         </Switch>
       </div>

@@ -47,25 +47,21 @@ const FormDialog = (props) => {
           <div className="body">
             <TextInput
               label="date"
-              multiline={false}
               value={key}
               type="date"
               onChange={inputKey} />
             <TextInput
               label="name"
-              multiline={false}
               value={text}
               type="text"
               onChange={inputText} />
             <TextInput
               label="time"
-              multiline={false}
               value={num}
               type="number"
               onChange={inputNum} />
             <TextInput
               label="color"
-              multiline={false}
               value={hex}
               type="color"
               onChange={inputHex} />

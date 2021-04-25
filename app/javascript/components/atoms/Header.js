@@ -15,13 +15,33 @@ const Header = (props) => {
           <li>
             <Link to="/todo">Todo</Link>
           </li>
-          <li>
-            <a href="#!" onClick={props.handleOpen} >
-              add study record
-            </a>
-          </li>
-          <li><a href="#">login</a></li>
-          <li><a href="#">signup</a></li>
+          {!Object.keys(props.user).length ? (
+            <React.Fragment>
+              <li>
+                <Link to="/login">Log in</Link>
+              </li>
+              <li>
+                <Link to="/signup">Sign up</Link>
+              </li>
+            </React.Fragment>
+          ) : (
+            <React.Fragment>
+              <li>
+                <a href="#!" onClick={props.handleOpen}>
+                  add study record
+                </a>
+              </li>
+              <li>
+                Sign in now<br/>
+                login as :{props.user.email}
+              </li>
+              <li>
+                <a href="#!" onClick={props.signout}>
+                  Sign out
+                </a>
+              </li>
+            </React.Fragment>
+          )}
         </ul>
       </nav>
     </div>

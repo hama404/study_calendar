@@ -5,6 +5,7 @@
 
 Ruby on Rails & REACT の Web アプリケーションです。  
 フロントを REACT で作成して、SPA 化しました。  
+Rails の Devise を使用してログイン機能を実装しています。  
 (Ruby on Rails & REACT, CRUD, SPA)
 
 ## URL
@@ -19,6 +20,7 @@ Ruby on Rails & REACT の Web アプリケーションです。
 
   - Web API
   - Webpacker
+  - Devise
 
 - REACT
 
@@ -42,6 +44,8 @@ Ruby on Rails & REACT の Web アプリケーションです。
 ## 実装した機能
 
 - 勉強時間投稿、編集、削除
+
+- ログイン認証
 
 - REACT
 
