@@ -51,3 +51,17 @@ Rails の Devise を使用してログイン機能を実装しています。
 
   - カレンダー表示
   - 円グラフ
+
+## パッケージ
+
+- axios
+
+- react-router-dom: ^5.2.0
+
+- react-calendar"
+
+- chart.js: ^2.9.4
+
+- react-chartjs-2
+
+- chart.piecelabel.js
