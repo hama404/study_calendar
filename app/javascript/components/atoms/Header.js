@@ -32,8 +32,7 @@ const Header = (props) => {
                 </a>
               </li>
               <li>
-                Sign in now<br/>
-                login as :{props.user.email}
+                {props.user.uid}
               </li>
               <li>
                 <a href="#!" onClick={props.signout}>

@@ -24,13 +24,7 @@ const Signup = (props) => {
   }
 
   const submitForm = () => {
-    const data = {
-      name,
-      email,
-      password,
-      password_confirmation
-    }
-    props.signup(data)
+    props.signup(name, email, password, password_confirmation)
   }
 
   return (

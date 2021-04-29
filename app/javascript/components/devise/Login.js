@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import axios from 'axios';
 import TextInput from '../atoms/TextInput'
 
 const Login = (props) => {
@@ -15,8 +14,7 @@ const Login = (props) => {
   }
 
   const submitForm = () => {
-    const data = { email, password }
-    props.login(data)
+    props.login(email, password)
   }
 
   return (

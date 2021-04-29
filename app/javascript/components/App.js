@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { Switch, Route } from 'react-router-dom';
 import axios from 'axios'
+import { useHistory } from 'react-router-dom';
+
 import Header from './atoms/Header';
 import First from './First';
 import Home from './Home';
@@ -10,10 +12,11 @@ import Login from './devise/Login';
 import Signup from './devise/Signup';
 
 const App = () => {
-  const [open, setOpen] = useState(false)
-  const [date, setDate] = useState(new Date())
-  const [lists, setLists] = useState([])
-  const [user, setUser] = useState({})
+  const [open, setOpen] = useState(false),
+        [date, setDate] = useState(new Date()),
+        [lists, setLists] = useState([]),
+        [user, setUser] = useState({});
+  const history = useHistory()
 
   const handleOpen = () => {
     setOpen(true)
@@ -74,16 +77,38 @@ const App = () => {
     }
   }
   
-  const signup = (data) => {
-    const user = {
-      email: data.email,
-      password: data.password
-    }
-    setUser(user)
+  const signup = (name, email, password, password_confirmation) => {
+    const data = { name, email, password, password_confirmation }
+    axios.post('/auth', data)
+    .then(resp => {
+      console.log(resp)
+      setUser({
+        uid: resp.data.data.uid,
+        name: resp.data.data.name,
+        email: resp.data.data.email,
+      })
+      history.push("/")
+    })
+    .catch(e => {
+      console.log(e)
+    })
   }
 
-  const login = (data) => {
-    setUser(data)
+  const login = (email, password) => {
+    const data = { email, password }
+    axios.post('/auth/sign_in', data)
+    .then(resp => {
+      console.log(resp)
+      setUser({
+        uid: resp.data.data.uid,
+        name: resp.data.data.name,
+        email: resp.data.data.email,
+      })
+      history.push("/")
+    })
+    .catch(e => {
+      console.log(e)
+    })
   }
   
   const signout = () => {
