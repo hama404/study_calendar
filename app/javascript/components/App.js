@@ -82,6 +82,13 @@ const App = () => {
     axios.post('/auth', data)
     .then(resp => {
       console.log(resp)
+      const session = JSON.stringify({
+        ["access-token"]: resp.headers["access-token"],
+        ["client"]: resp.headers["client"],
+        ["uid"]: resp.headers["uid"],
+      })
+      localStorage.setItem("session", session)
+
       setUser({
         uid: resp.data.data.uid,
         name: resp.data.data.name,
@@ -99,6 +106,13 @@ const App = () => {
     axios.post('/auth/sign_in', data)
     .then(resp => {
       console.log(resp)
+      const session = JSON.stringify({
+        ["access-token"]: resp.headers["access-token"],
+        ["client"]: resp.headers["client"],
+        ["uid"]: resp.headers["uid"],
+      })
+      localStorage.setItem("session", session)
+
       setUser({
         uid: resp.data.data.uid,
         name: resp.data.data.name,
@@ -112,7 +126,18 @@ const App = () => {
   }
   
   const signout = () => {
-    setUser({})
+    const headers = JSON.parse(localStorage.getItem("session"))
+    console.log(headers)
+    axios.delete('/auth/sign_out', { headers })
+    .then(resp => {
+      console.log(resp)
+      localStorage.removeItem("session")
+      setUser({})
+      history.push("/")
+    })
+    .catch(e => {
+      console.log(e)
+    })
   }
 
   const makeKey = (date) => {
