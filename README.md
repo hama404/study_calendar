@@ -8,9 +8,18 @@ Ruby on Rails & REACT の Web アプリケーションです。
 Rails の Devise を使用してログイン機能を実装しています。  
 (Ruby on Rails & REACT, CRUD, SPA)
 
-## URL
+URL : [http://54.168.99.68/](http://54.168.99.68/)  
+Github : [https://github.com/hama404/study_calendar](https://github.com/hama404/study_calendar)
 
-[54.168.99.68](http://54.168.99.68/)
+## メモ
+
+gem devise_token_auth で web api の認証機能を実装していて、  
+現在はとりあえず認証のトークンを localStrage で管理しているのだが、  
+どこに保存するのが最適なのかを考える。
+
+- resdux の実装
+
+- material ui の実装
 
 ## 使用技術
 
