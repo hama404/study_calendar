@@ -143,6 +143,7 @@ const App = () => {
         .then(() => {
           localStorage.removeItem("session")
           setUser(null)
+          toggleDrower(false)
           history.push("/")
         })
         .catch(err => {

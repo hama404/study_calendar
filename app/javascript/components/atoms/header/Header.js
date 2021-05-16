@@ -16,7 +16,7 @@ const Header = (props) => {
           toggleDrower={props.toggleDrower}
         />
       </div>
-      {props.openDrower && (
+      {props.openDrower && props.user && (
         <Drower
           user={props.user}
           signout={props.signout}
