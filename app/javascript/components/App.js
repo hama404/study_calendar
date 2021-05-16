@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import { Switch, Route } from 'react-router-dom';
 import axios from 'axios'
 import { useHistory } from 'react-router-dom';
 
-import Header from './atoms/Header';
+import { Header } from './atoms/header';
 import First from './First';
 import Home from './Home';
 import Todo from './Todo';
@@ -12,19 +12,21 @@ import Login from './devise/Login';
 import Signup from './devise/Signup';
 
 const App = () => {
-  const [open, setOpen] = useState(false),
-        [date, setDate] = useState(new Date()),
+  const [openDialog, setOpenDialog] = useState(false),
+        [openDrower, setOpenDrower] = useState(false);
+
+  const toggleDialog = useCallback((bool) => () => {
+    setOpenDialog(bool)
+  }, [openDialog])
+
+  const toggleDrower = useCallback((bool) => () => {
+    setOpenDrower(bool)
+  }, [openDrower])
+
+  const [date, setDate] = useState(new Date()),
         [lists, setLists] = useState([]),
-        [user, setUser] = useState({});
+        [user, setUser] = useState(null);
   const history = useHistory()
-
-  const handleOpen = () => {
-    setOpen(true)
-  }
-
-  const handleClose = () => {
-    setOpen(false)
-  }
 
   const changeDate = (n) => {
     const newDate = new Date(date)
@@ -43,8 +45,8 @@ const App = () => {
         ]
       });
     })
-    .catch(e => {
-      console.log(e)
+    .catch(err => {
+      console.log(err)
     })
   }
 
@@ -71,73 +73,83 @@ const App = () => {
           return prevLists.filter(value => value.id !== id)
         })
       })
-      .catch(e => {
-        console.log(e);
+      .catch(err => {
+        console.log(err);
       });
     }
   }
   
   const signup = (name, email, password, password_confirmation) => {
+    if (name === "" || email === "" || password === "" || password_confirmation === "") {
+      alert("required items are not entered")
+      return false
+    } else if (password !== password_confirmation) {
+      alert("passwords doesn't match, please try again")
+      return false
+    }
+
     const data = { name, email, password, password_confirmation }
     axios.post('/auth', data)
-    .then(resp => {
-      console.log(resp)
-      const session = JSON.stringify({
-        ["access-token"]: resp.headers["access-token"],
-        ["client"]: resp.headers["client"],
-        ["uid"]: resp.headers["uid"],
-      })
-      localStorage.setItem("session", session)
+      .then(resp => {
+        const headers = resp.headers
+        const { uid, name, email, nickname, image } = resp.data.data
+        const session = JSON.stringify({
+          ["access-token"]: headers["access-token"],
+          ["client"]: headers["client"],
+          ["uid"]: headers["uid"],
+        })
 
-      setUser({
-        uid: resp.data.data.uid,
-        name: resp.data.data.name,
-        email: resp.data.data.email,
+        localStorage.setItem("session", session)
+        setUser({ uid, name, email, nickname, image })
+        history.push("/")
       })
-      history.push("/")
-    })
-    .catch(e => {
-      console.log(e)
-    })
+      .catch(err => {
+        console.log(err)
+      }
+    )
   }
 
   const login = (email, password) => {
+    if (email === "" || password === "") {
+      alert("required items are not entered")
+      return false
+    }
+
     const data = { email, password }
     axios.post('/auth/sign_in', data)
     .then(resp => {
-      console.log(resp)
+      const headers = resp.headers
+      const { uid, name, email, nickname, image } = resp.data.data
       const session = JSON.stringify({
-        ["access-token"]: resp.headers["access-token"],
-        ["client"]: resp.headers["client"],
-        ["uid"]: resp.headers["uid"],
+        ["access-token"]: headers["access-token"],
+        ["client"]: headers["client"],
+        ["uid"]: headers["uid"],
       })
-      localStorage.setItem("session", session)
 
-      setUser({
-        uid: resp.data.data.uid,
-        name: resp.data.data.name,
-        email: resp.data.data.email,
-      })
+      localStorage.setItem("session", session)
+      setUser({ uid, name, email, nickname, image })
       history.push("/")
     })
-    .catch(e => {
-      console.log(e)
+    .catch(err => {
+      console.log(err)
     })
   }
   
   const signout = () => {
-    const headers = JSON.parse(localStorage.getItem("session"))
-    console.log(headers)
-    axios.delete('/auth/sign_out', { headers })
-    .then(resp => {
-      console.log(resp)
-      localStorage.removeItem("session")
-      setUser({})
-      history.push("/")
-    })
-    .catch(e => {
-      console.log(e)
-    })
+    const sure = window.confirm('Are you sure?');
+    if (sure) {
+      const headers = JSON.parse(localStorage.getItem("session"))
+      axios.delete('/auth/sign_out', { headers })
+        .then(() => {
+          localStorage.removeItem("session")
+          setUser(null)
+          history.push("/")
+        })
+        .catch(err => {
+          console.log(err)
+        }
+      )
+    } else return false
   }
 
   const makeKey = (date) => {
@@ -174,13 +186,24 @@ const App = () => {
 
   useEffect(() => {
     axios.get('/api/v1/lists.json')
-    .then(resp => {
-      console.log(resp.data)
-      setLists(resp.data);
-    })
-    .catch(err => {
-      console.log(err);
-    })
+      .then(resp => {
+        setLists(resp.data);
+      })
+      .catch(err => {
+        console.log(err);
+      }
+    )
+
+    const headers = JSON.parse(localStorage.getItem("session"))
+    axios.get('/api/v1/whoami', { headers })
+      .then(resp => {
+        const { uid, name, email, nickname, image } = resp.data
+        setUser({ uid, name, email, nickname, image })
+      })
+      .catch(err => {
+        console.log(err)
+      }
+    )
   }, [])
 
   return (
@@ -188,7 +211,10 @@ const App = () => {
       <Header
         user={user}
         signout={signout}
-        handleOpen={handleOpen} />
+        openDrower={openDrower}
+        toggleDrower={toggleDrower}
+        toggleDialog={toggleDialog}
+      />
       <div className="container">
         <Switch>
           <Route exact path="/" component={First} />
@@ -217,13 +243,13 @@ const App = () => {
           }/>
         </Switch>
       </div>
-      {open && (
+      {openDialog && (
         <FormDialog
           date={date}
           makeKey={makeKey}
           changeColorCode={changeColorCode}
           addList={addList}
-          handleClose={handleClose} />
+          toggleDialog={toggleDialog} />
       )}
     </div>
   );

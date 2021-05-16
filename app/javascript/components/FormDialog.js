@@ -36,11 +36,15 @@ const FormDialog = (props) => {
     }
 
     props.addList(data)
-    props.handleClose()
+    props.toggleDialog(false)()
+  }
+
+  const handleClose = (event) => {
+    if (!event.target.closest('.forms')) props.toggleDialog(false)()
   }
 
   return (
-    <div className="forms_outer">
+    <div className="overlay-wrapper" onClick={handleClose}>
       <div className="forms">
         <div className="forms_inner">
           <h2>Add study record</h2>
@@ -67,7 +71,7 @@ const FormDialog = (props) => {
               onChange={inputHex} />
           </div>
           <div className="btn-group">
-            <button onClick={props.handleClose}>Close</button>
+            <button onClick={props.toggleDialog(false)}>Close</button>
             <button onClick={submitForm}>Submit</button>
           </div>
         </div>
