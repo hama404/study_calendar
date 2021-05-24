@@ -19,11 +19,14 @@ gem devise_token_auth で web api の認証機能を実装していて、
 現在はとりあえず認証のトークンを localStrage で管理しているのだが、  
 どこに保存するのが最適なのかを考える。
 
-javascript で closest を使用しているので、IE に対していません。
+- javascript polyfill、IE への対応
 
-- resdux の実装
+  - closest
 
-- material ui の実装
+- message component
+
+  - 改行の反映
+  - error メッセージ対応、色の変更
 
 ## 使用技術
 
