@@ -4,6 +4,7 @@ import axios from 'axios'
 import { useHistory } from 'react-router-dom';
 
 import { Header } from './atoms/header';
+import Message from './atoms/Message';
 import First from './First';
 import Home from './Home';
 import Todo from './Todo';
@@ -25,7 +26,8 @@ const App = () => {
 
   const [date, setDate] = useState(new Date()),
         [lists, setLists] = useState([]),
-        [user, setUser] = useState(null);
+        [user, setUser] = useState(null),
+        [message, setMessage] = useState(null);
   const history = useHistory()
 
   const changeDate = (n) => {
@@ -43,9 +45,11 @@ const App = () => {
           ...prevLists,
           resp.data,
         ]
-      });
+      })
+      setMessage({text: "successfully add list!"})
     })
     .catch(err => {
+      setMessage({text: "please try again"})
       console.log(err)
     })
   }
@@ -60,8 +64,13 @@ const App = () => {
           return value;
         })
       })
+      setMessage({text: "successfully update list!"})
     })
-  }
+    .catch(err => {
+      setMessage({text: "please try again"})
+      console.log(err)
+    });
+}
 
   const deleteList = (id) => {
     const sure = window.confirm('Are you sure?');
@@ -72,8 +81,10 @@ const App = () => {
         setLists((prevLists) => {
           return prevLists.filter(value => value.id !== id)
         })
+        setMessage({text: "successfully delete list!"})
       })
       .catch(err => {
+        setMessage({text: "please try again"})
         console.log(err);
       });
     }
@@ -101,9 +112,11 @@ const App = () => {
 
         localStorage.setItem("session", session)
         setUser({ uid, name, email, nickname, image })
+        setMessage({text: "successfully sign up!"})
         history.push("/")
       })
       .catch(err => {
+        setMessage({text: "please try again"})
         console.log(err)
       }
     )
@@ -128,10 +141,12 @@ const App = () => {
 
       localStorage.setItem("session", session)
       setUser({ uid, name, email, nickname, image })
+      setMessage({text: "successfully log in!"})
       history.push("/")
     })
     .catch(err => {
       console.log(err)
+      setMessage({text: "please try again"})
     })
   }
   
@@ -144,9 +159,11 @@ const App = () => {
           localStorage.removeItem("session")
           setUser(null)
           toggleDrower(false)
+          setMessage({text: "good bye!"})
           history.push("/")
         })
         .catch(err => {
+          setMessage({text: "please try again"})
           console.log(err)
         }
       )
@@ -216,7 +233,7 @@ const App = () => {
         toggleDrower={toggleDrower}
         toggleDialog={toggleDialog}
       />
-      <div className="container">
+      <main>
         <Switch>
           <Route exact path="/" component={First} />
           <Route exact path='/home' render={() => 
@@ -243,14 +260,20 @@ const App = () => {
               signup={signup} />
           }/>
         </Switch>
-      </div>
+      </main>
       {openDialog && (
         <FormDialog
           date={date}
           makeKey={makeKey}
           changeColorCode={changeColorCode}
           addList={addList}
-          toggleDialog={toggleDialog} />
+          onClose={toggleDialog(false)} />
+      )}
+      {message && (
+        <Message
+          message={message}
+          setMessage={setMessage}
+        />
       )}
     </div>
   );

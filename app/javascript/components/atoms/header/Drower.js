@@ -1,6 +1,6 @@
 import React from 'react'
-import styled from 'styled-components';
-import { BsBoxArrowInRight, BsPersonSquare } from 'react-icons/bs'
+import styled from 'styled-components'
+import { BsBoxArrowInRight, BsPersonSquare, BsX } from 'react-icons/bs'
 
 const Drower = (props) => {
 
@@ -27,13 +27,32 @@ const Drower = (props) => {
     padding: 0.25rem 0;
   `
 
+  const ListClose = styled.div`
+    text-align: right;
+  `
+
+  const IconButton = styled.div`
+    display: inline-flex;
+    padding: 0.5rem;
+    font-size: 2rem;
+    &:hover {
+      cursor: pointer;
+      color: #999;
+    }
+  `
+
   const handleClose = (event) => {
-    if (!event.target.closest('.drower')) props.toggleDialog(false)()
+    if (!event.target.closest('.drower')) props.onClose()
   }
   return (
     <div className="overlay-wrapper" onClick={handleClose}>
       <div className="drower">
         <ul>
+          <ListClose onClick={props.onClose}>
+            <IconButton>
+              <BsX />
+            </IconButton>
+          </ListClose>
           <ListItem>
             <ListIcon>
               <BsPersonSquare />
@@ -50,7 +69,6 @@ const Drower = (props) => {
               Sign out
             </ListText>
           </ListItem>
-          <button onClick={props.onClose}>Close</button>
         </ul>
       </div>
     </div>
