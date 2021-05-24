@@ -8,6 +8,7 @@ Ruby on Rails & REACT の Web アプリケーションです。
 Rails の Devise を使用してログイン機能を実装しています。  
 (Ruby on Rails & REACT, CRUD, SPA)
 デザインは react-icons と styled-components で作成した。
+git はコマンドライン使用していたのだが sourcetree を導入してみた。
 
 URL : [http://54.168.99.68/](http://54.168.99.68/)  
 Github : [https://github.com/hama404/study_calendar](https://github.com/hama404/study_calendar)
@@ -18,7 +19,7 @@ gem devise_token_auth で web api の認証機能を実装していて、
 現在はとりあえず認証のトークンを localStrage で管理しているのだが、  
 どこに保存するのが最適なのかを考える。
 
-javascript で closest を使用しているので、IE に対しいていません。
+javascript で closest を使用しているので、IE に対していません。
 
 - resdux の実装
 

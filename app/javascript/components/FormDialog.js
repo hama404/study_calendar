@@ -1,7 +1,17 @@
 import React, { useState } from 'react';
+import styled from 'styled-components'
 import TextInput from './atoms/TextInput'
 
 const FormDialog = (props) => {
+
+  const Button = styled.button`
+    font-size: 1em;
+    margin: 1em;
+    padding: 0.25em 1em;
+    border-radius: 3px;
+    color: rgba(103, 58, 183, 0.5);
+    border: 2px solid rgba(103, 58, 183, 0.5);
+  `
 
   const [key, setKey] = useState(props.makeKey(props.date));
   const [text, setText] = useState("");
@@ -36,11 +46,11 @@ const FormDialog = (props) => {
     }
 
     props.addList(data)
-    props.toggleDialog(false)()
+    props.onClose()
   }
 
   const handleClose = (event) => {
-    if (!event.target.closest('.forms')) props.toggleDialog(false)()
+    if (!event.target.closest('.forms')) props.onClose()
   }
 
   return (
@@ -71,8 +81,8 @@ const FormDialog = (props) => {
               onChange={inputHex} />
           </div>
           <div className="btn-group">
-            <button onClick={props.toggleDialog(false)}>Close</button>
-            <button onClick={submitForm}>Submit</button>
+            <Button onClick={props.onClose}>Close</Button>
+            <Button onClick={submitForm}>Submit</Button>
           </div>
         </div>
       </div>

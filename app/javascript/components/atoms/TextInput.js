@@ -11,11 +11,13 @@ const TextInput = (props) => {
           value={props.value}
           type={props.type}
           id={props.label}
+          placeholder={props.label}
           onChange={props.onChange} />
       ) : (
         <textarea
           value={props.value}
           id={props.label}
+          placeholder={props.label}
           onChange={props.onChange} />
       )}
     </React.Fragment>

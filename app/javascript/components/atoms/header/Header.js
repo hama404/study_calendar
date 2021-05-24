@@ -6,7 +6,7 @@ import { Drower,  Menus } from '.';
 const Header = (props) => {
   return (
     <>
-      <div className="header">
+      <header>
         <h1>
           <Link to="/">TODO APP</Link>
         </h1>
@@ -15,7 +15,7 @@ const Header = (props) => {
           toggleDialog={props.toggleDialog}
           toggleDrower={props.toggleDrower}
         />
-      </div>
+      </header>
       {props.openDrower && props.user && (
         <Drower
           user={props.user}
