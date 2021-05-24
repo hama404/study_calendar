@@ -217,8 +217,10 @@ const App = () => {
       .then(resp => {
         const { uid, name, email, nickname, image } = resp.data
         setUser({ uid, name, email, nickname, image })
+        setMessage({text: "welcome!!"})
       })
       .catch(err => {
+        setMessage({text: "please login"})
         console.log(err)
       }
     )
