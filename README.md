@@ -6,14 +6,25 @@
 Ruby on Rails & REACT の Web アプリケーションです。  
 フロントを REACT で作成して、SPA 化しました。  
 Rails の Devise を使用してログイン機能を実装しています。  
-(Ruby on Rails & REACT, CRUD, SPA)
-デザインは react-icons と styled-components で作成した。
+(Ruby on Rails & REACT, CRUD, SPA)  
+デザインは react-icons と styled-components で作成した。  
 git はコマンドライン使用していたのだが sourcetree を導入してみた。
 
 URL : [http://54.168.99.68/](http://54.168.99.68/)  
 Github : [https://github.com/hama404/study_calendar](https://github.com/hama404/study_calendar)
 
 ## メモ
+
+- improve design
+
+  - styled-button for component recycle
+  - devise login page
+  - implement test user
+
+- message component
+
+  - 改行の反映
+  - error メッセージ対応、色の変更
 
 gem devise_token_auth で web api の認証機能を実装していて、  
 現在はとりあえず認証のトークンを localStrage で管理しているのだが、  
@@ -22,11 +33,6 @@ gem devise_token_auth で web api の認証機能を実装していて、
 - javascript polyfill、IE への対応
 
   - closest
-
-- message component
-
-  - 改行の反映
-  - error メッセージ対応、色の変更
 
 ## 使用技術
 
