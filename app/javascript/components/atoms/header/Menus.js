@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import styled from 'styled-components'
-import { BsCalendarFill, BsList, BsPlusSquare, BsReverseLayoutTextSidebarReverse } from 'react-icons/bs'
+import { BsCalendar, BsList, BsPlusCircle, BsReverseLayoutTextSidebarReverse } from 'react-icons/bs'
 
 const Button = styled.button`
   font-size: 1em;
@@ -40,18 +40,18 @@ const Menus = (props) => {
       ) : (
         <>
           <li>
-            <Link to="/home" style={style}>
-              <BsCalendarFill />
+            <Link to="/calendar" style={style}>
+              <BsCalendar />
             </Link>
           </li>
           <li>
-            <Link to="/todo" style={style}>
+            <Link to="/lists" style={style}>
               <BsReverseLayoutTextSidebarReverse />
             </Link>
           </li>
           <li>
             <a href="#!" onClick={props.toggleDialog(true)} style={style}>
-              <BsPlusSquare />
+              <BsPlusCircle />
             </a>
           </li>
           <li>

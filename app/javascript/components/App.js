@@ -238,13 +238,13 @@ const App = () => {
       <main>
         <Switch>
           <Route exact path="/" component={First} />
-          <Route exact path='/home' render={() => 
+          <Route exact path='/calendar' render={() => 
             <Home
               date={date}
               setDate={setDate}
               dateLists={dateLists} />
           }/>
-          <Route exact path='/todo' render={() => 
+          <Route exact path='/lists' render={() => 
             <Todo
               date={date}
               dateLists={dateLists}

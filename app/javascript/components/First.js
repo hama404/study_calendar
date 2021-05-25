@@ -1,36 +1,33 @@
 import React from 'react';
-import { Pie } from 'react-chartjs-2';
+import { Content, Graph } from './atoms';
 
 const First = () => {
 
-  const graphData= {
-    labels: [
-      'Red',
-      'Blue',
-      'Yellow'
-    ],
-    datasets: [{
-      label: 'My First Dataset',
-      data: [300, 50, 100],
-      backgroundColor: [
-        'rgb(255, 99, 132)',
-        'rgb(54, 162, 235)',
-        'rgb(255, 205, 86)'
-      ],
-      hoverOffset: 4
-    }]  
-  };
+  const initData = [
+    {
+      name: 'Red',
+      time: 300,
+      color: 'rgb(255, 99, 132)'
+    },
+    {
+      name: 'Blue',
+      time: 50,
+      color: 'rgb(54, 162, 235)'
+    },
+    {
+      name: 'Yellow',
+      time: 100,
+      color: 'rgb(255, 205, 86)'
+    },
+  ]
 
   return (
-    <React.Fragment>
-      <div className="content">
-        勉強時間を<br/>
-        可視化します。
-      </div>
+    <>
+      <Content />
       <div className="graph">
-        <Pie data={graphData} />
+        <Graph dateLists={initData} />
       </div>
-    </React.Fragment>
+    </>
   );
 }
 
