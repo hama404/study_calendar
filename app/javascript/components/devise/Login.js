@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
-import { TextInput } from '../atoms';
+import { PrimaryButton, SecondaryButton, TextInput } from '../atoms';
 
 const Login = (props) => {
   const [email, setEmail] = useState("")
@@ -44,8 +44,8 @@ const Login = (props) => {
           <div className="spacer" />
           <Link to="/signup">If you don't have an account, please sign up</Link>
           <div className="btn-group">
-            <button onClick={loginAsTestUser}>Login as test user</button>
-            <button onClick={submitForm}>Submit</button>
+            <SecondaryButton onClick={loginAsTestUser}>Login as test user</SecondaryButton>
+            <PrimaryButton onClick={submitForm}>Submit</PrimaryButton>
           </div>
         </div>
       </div>

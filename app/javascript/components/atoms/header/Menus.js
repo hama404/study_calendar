@@ -1,17 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import styled from 'styled-components'
 import { BsCalendar, BsList, BsPlusCircle, BsReverseLayoutTextSidebarReverse } from 'react-icons/bs'
-
-const Button = styled.button`
-  font-size: 1em;
-  margin: 1em;
-  padding: 0.25em 1em;
-  border-radius: 3px;
-  color: rgba(103, 58, 183, 0.5);
-  background: inherit;
-  border: 2px solid rgba(103, 58, 183, 0.5);
-`
+import { HeaderButton } from '../';
 
 const Menus = (props) => {
 
@@ -27,14 +17,14 @@ const Menus = (props) => {
       {!props.user ? (
         <>
           <li>
-            <Button>
+            <HeaderButton>
               <Link to="/login">Log in</Link>
-            </Button>
+            </HeaderButton>
           </li>
           <li>
-            <Button>
+            <HeaderButton>
               <Link to="/signup">Sign up</Link>
-            </Button>
+            </HeaderButton>
           </li>
         </>
       ) : (

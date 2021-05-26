@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
-import { TextInput } from '../atoms';
+import { PrimaryButton, TextInput } from '../atoms';
 
 const Signup = (props) => {
   const [name, setName] = useState("")
@@ -60,7 +60,7 @@ const Signup = (props) => {
           <div className="spacer" />
           <Link to="/login">If you have an account, please log in</Link>
           <div className="btn-group">
-            <button onClick={submitForm}>Submit</button>
+            <PrimaryButton onClick={submitForm}>Submit</PrimaryButton>
           </div>
         </div>
       </div>

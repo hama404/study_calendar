@@ -1,17 +1,7 @@
 import React, { useState } from 'react';
-import styled from 'styled-components'
-import { TextInput } from '../atoms';
+import { GreyButton, PrimaryButton, TextInput } from '../atoms';
 
 const FormDialog = (props) => {
-
-  const Button = styled.button`
-    font-size: 1em;
-    margin: 1em;
-    padding: 0.25em 1em;
-    border-radius: 3px;
-    color: rgba(103, 58, 183, 0.5);
-    border: 2px solid rgba(103, 58, 183, 0.5);
-  `
 
   const [key, setKey] = useState(props.makeKey(props.date));
   const [text, setText] = useState("");
@@ -80,9 +70,10 @@ const FormDialog = (props) => {
               type="color"
               onChange={inputHex} />
           </div>
+          <div className="spacer" />
           <div className="btn-group">
-            <Button onClick={props.onClose}>Close</Button>
-            <Button onClick={submitForm}>Submit</Button>
+            <GreyButton onClick={props.onClose}>Close</GreyButton>
+            <PrimaryButton onClick={submitForm}>Submit</PrimaryButton>
           </div>
         </div>
       </div>
