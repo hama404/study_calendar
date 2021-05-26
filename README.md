@@ -24,17 +24,17 @@ Github : [https://github.com/hama404/study_calendar](https://github.com/hama404/
 
 - improve design
 
-  - styled-button for component recycle
   - responsive design
   - loading animation
   - ~~devise login page~~
   - ~~implement test user~~
+  - ~~styled-button for component recycle~~
 
 - message component
 
+  - error メッセージ対応、色の変更
   - ~~改行の反映~~
   - 複数のメッセージに対応
-  - error メッセージ対応、色の変更
 
 - javascript polyfill、IE への対応
 

@@ -1,51 +1,43 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import { BsCalendar, BsList, BsPlusCircle, BsReverseLayoutTextSidebarReverse } from 'react-icons/bs'
-import { HeaderButton } from '../';
 
 const Menus = (props) => {
-
-  const style = {
-    display: "inline-flex",
-    padding: "0.5rem",
-    fontSize: "1.25rem"
-  }
-
   return (
     <nav>
     <ul>
       {!props.user ? (
         <>
-          <li>
-            <HeaderButton>
-              <Link to="/login">Log in</Link>
-            </HeaderButton>
+          <li className="main">
+            <Link to="/login" className="link-btn">
+              Log in
+            </Link>
           </li>
-          <li>
-            <HeaderButton>
-              <Link to="/signup">Sign up</Link>
-            </HeaderButton>
+          <li className="main">
+            <Link to="/signup" className="link-btn">
+              Sign up
+            </Link>
           </li>
         </>
       ) : (
         <>
-          <li>
-            <Link to="/calendar" style={style}>
+          <li className="main">
+            <Link to="/calendar" className="link-icon-btn">
               <BsCalendar />
             </Link>
           </li>
-          <li>
-            <Link to="/lists" style={style}>
+          <li className="main">
+            <Link to="/lists" className="link-icon-btn">
               <BsReverseLayoutTextSidebarReverse />
             </Link>
           </li>
           <li>
-            <a href="#!" onClick={props.toggleDialog(true)} style={style}>
+            <a onClick={props.toggleDialog(true)} className="link-icon-btn">
               <BsPlusCircle />
             </a>
           </li>
           <li>
-            <a href="#!" onClick={props.toggleDrower(true)} style={style}>
+            <a onClick={props.toggleDrower(true)} className="link-icon-btn">
               <BsList />
             </a>
           </li>

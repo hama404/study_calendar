@@ -8,7 +8,9 @@ export const PrimaryButton = styled.button`
   color: #fff;
   background: rgba(103,58,183,0.5);
   border: 1px solid rgba(103,58,183,0.5);
-`
+  &:hover {
+    background: rgba(103,58,183,0.6);
+  }`
 
 export const SecondaryButton = styled.button`
   font-size: 1rem;
@@ -18,6 +20,9 @@ export const SecondaryButton = styled.button`
   color: rgba(103,58,183,0.5);
   background: #fff;
   border: 1px solid rgba(103,58,183,0.5);
+  &:hover {
+    background: rgba(103,58,183,0.1);
+  }
 ` 
 
 export const GreyButton = styled.button`
@@ -28,15 +33,15 @@ export const GreyButton = styled.button`
   color: #fff;
   background: #ccc;
   border: 1px solid #999;
+  &:hover {
+    background: #bbb;
+  }
 ` 
 
-export const HeaderButton = styled.button`
-  font-size: 1em;
-  margin: 0.5rem;
-  padding: 0.25em 1em;
-  border-radius: 3px;
-  color: rgba(103, 58, 183, 0.5);
-  background: inherit;
-  border: 2px solid rgba(103, 58, 183, 0.5);
+export const IconButton = styled.button`
+  display: inline-flex;
+  font-size: 1.25em;
+  &:hover {
+    color: #999;
+  }
 `
-
