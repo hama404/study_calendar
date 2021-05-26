@@ -16,8 +16,10 @@ a {
   color: rgb(0, 0, 0);
   opacity: 0.7;
 }
-a:hover {
-  opacity: 1;
+@media screen and (min-width: 576px) {
+  a:hover {
+    opacity: 1;
+  }
 }
 input {
   margin: 0.25rem;
@@ -53,8 +55,10 @@ button {
   padding: 0.25em 1em;
   cursor: pointer;
 }
-.link-btn:hover {
-  background: rgba(103, 58, 183, 0.1);
+@media screen and (min-width: 576px) {
+  .link-btn:hover {
+    background: rgba(103, 58, 183, 0.1);
+  }
 }
 .link-icon-btn {
   display: inline-flex;
@@ -133,44 +137,35 @@ header nav ul li.main {
   background: rgba(255, 255, 255, 1);
 }
 
-/* mesages */
-.message {
-  position: absolute;
-  bottom: 1rem;
-  left: 1rem;
-  padding: 1rem 2rem;
-
-  line-height: 1.5;
-  color: #fff;
-  background: rgba(0, 0, 0, 0.6);
-  display: flex;
-  align-items: center;
-}
-.message button {
-  margin-left: 1rem;
-}
-
 /* content */
 .content {
   flex: 1;
   height: 100%;
-  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   font-size: 2.5rem;
   line-height: 2;
   font-weight: bold;
 }
+.content .inner {
+  position: relative;
+  width: 27rem;
+  height: 12rem;
+  z-index: -1;
+  margin: 3rem 2rem;
+}
 .content .top {
   position: absolute;
-  top: 40%;
-  left: 40%;
-  transform: translateX(-50%) translateY(-50%);
+  top: 0;
+  left: 0;
 }
 .content .bottom {
   position: absolute;
-  top: 55%;
-  right: 45%;
-  transform: translateX(50%) translateY(-50%);
+  bottom: 0;
+  right: 0;
 }
 
 /* calendar */
@@ -247,6 +242,23 @@ header nav ul li.main {
   flex-direction: column;
 }
 
+/* mesages */
+.message {
+  position: fixed;
+  bottom: 1rem;
+  left: 1rem;
+  padding: 1rem 2rem;
+
+  line-height: 1.5;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+}
+.message button {
+  margin-left: 1rem;
+}
+
 /* devise */
 .login,
 .signup {
@@ -263,4 +275,54 @@ header nav ul li.main {
 .login h2,
 .signup h2 {
   text-align: center;
+}
+
+/* Responsive */
+@media screen and (max-width: 1024px) {
+  .content {
+    font-size: 2rem;
+  }
+}
+@media screen and (max-width: 576px) {
+  .wrapper {
+    height: auto;
+  }
+  .link-btn {
+    font-size: 0.85rem;
+  }
+  main {
+    min-height: 100vh;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .drower {
+    width: 15rem;
+  }
+  .content {
+    flex: none;
+    width: 100%;
+    height: auto;
+  }
+  .content .inner {
+    width: 80%;
+    height: 8rem;
+  }
+  .graph {
+    flex: 1;
+    width: 100%;
+    align-items: flex-start;
+  }
+  .todolists {
+    width: 80%;
+  }
+  .forms {
+    width: 90%;
+  }
+  .forms_inner {
+    width: 85%;
+  }
+  .login,
+  .signup {
+    width: 80%;
+  }
 }
