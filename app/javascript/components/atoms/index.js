@@ -1,5 +1,1 @@
-export { default as Content } from './Content'
-export { default as Graph } from './Graph'
-export { default as List } from './List'
-export { default as Message } from './Message'
-export { default as TextInput } from './TextInput'
+export { default as TextInput } from '../atoms/TextInput'

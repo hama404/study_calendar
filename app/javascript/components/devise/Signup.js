@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import TextInput from '../atoms/TextInput'
+import { TextInput } from '../atoms';
 
 const Signup = (props) => {
   const [name, setName] = useState("")

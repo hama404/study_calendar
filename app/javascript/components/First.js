@@ -1,5 +1,5 @@
 import React from 'react';
-import { Content, Graph } from './atoms';
+import { Content, Graph } from './modules';
 
 const First = () => {
 

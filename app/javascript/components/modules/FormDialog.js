@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components'
-import TextInput from './atoms/TextInput'
+import { TextInput } from '../atoms';
 
 const FormDialog = (props) => {
 

@@ -3,14 +3,9 @@ import { Switch, Route } from 'react-router-dom';
 import axios from 'axios'
 import { useHistory } from 'react-router-dom';
 
-import { Header } from './atoms/header';
-import Message from './atoms/Message';
-import First from './First';
-import Home from './Home';
-import Todo from './Todo';
-import FormDialog from './FormDialog';
-import Login from './devise/Login';
-import Signup from './devise/Signup';
+import { First, Home, Todo } from '.';
+import { FormDialog, Header, Message } from './modules';
+import { Login, Signup } from './devise';
 
 const App = () => {
   const [openDialog, setOpenDialog] = useState(false),

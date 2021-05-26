@@ -1,6 +1,6 @@
 import React from 'react'
 import Calendar from 'react-calendar'
-import { Graph } from './atoms'
+import { Graph } from './modules'
 import 'react-calendar/dist/Calendar.css'
 
 const Home = (props) => {

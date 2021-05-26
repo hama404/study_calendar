@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { Drower,  Menus } from '.';
+import { Drower, Menus } from '../atoms/header';
+
 
 const Header = (props) => {
   return (

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import TextInput from './TextInput';
+import { TextInput } from '../atoms';
 
 const List = (props) => {
 

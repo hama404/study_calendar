@@ -1,5 +1,5 @@
 import React from 'react';
-import List from './atoms/List';
+import List from './modules/List';
 
 const Todo = (props) => {
 
