@@ -2,9 +2,9 @@ import React from 'react';
 
 const TextInput = (props) => {
   return (
-    <React.Fragment>
+    <div className="input-group">
       {props.label && (
-        <label htmlFor={props.label}>{props.label} :</label>
+        <label htmlFor={props.label}>{props.label}</label>
       )}
       {!props.multiline ? (
         <input
@@ -20,7 +20,7 @@ const TextInput = (props) => {
           placeholder={props.label}
           onChange={props.onChange} />
       )}
-    </React.Fragment>
+    </div>
   )
 }
 

@@ -3,14 +3,9 @@ import { Switch, Route } from 'react-router-dom';
 import axios from 'axios'
 import { useHistory } from 'react-router-dom';
 
-import { Header } from './atoms/header';
-import Message from './atoms/Message';
-import First from './First';
-import Home from './Home';
-import Todo from './Todo';
-import FormDialog from './FormDialog';
-import Login from './devise/Login';
-import Signup from './devise/Signup';
+import { First, Home, Todo } from '.';
+import { FormDialog, Header, Message } from './modules';
+import { Login, Signup } from './devise';
 
 const App = () => {
   const [openDialog, setOpenDialog] = useState(false),
@@ -158,7 +153,7 @@ const App = () => {
         .then(() => {
           localStorage.removeItem("session")
           setUser(null)
-          toggleDrower(false)
+          toggleDrower(false)()
           setMessage({text: "good bye!"})
           history.push("/")
         })
@@ -220,7 +215,7 @@ const App = () => {
         setMessage({text: "welcome!!"})
       })
       .catch(err => {
-        setMessage({text: "please login"})
+        setMessage({text: "please login\n(you can login as test user)"})
         console.log(err)
       }
     )
@@ -238,13 +233,13 @@ const App = () => {
       <main>
         <Switch>
           <Route exact path="/" component={First} />
-          <Route exact path='/home' render={() => 
+          <Route exact path='/calendar' render={() => 
             <Home
               date={date}
               setDate={setDate}
               dateLists={dateLists} />
           }/>
-          <Route exact path='/todo' render={() => 
+          <Route exact path='/lists' render={() => 
             <Todo
               date={date}
               dateLists={dateLists}

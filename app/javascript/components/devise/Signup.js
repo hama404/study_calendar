@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import TextInput from '../atoms/TextInput'
+import { Link } from 'react-router-dom';
+import { PrimaryButton, TextInput } from '../atoms';
 
 const Signup = (props) => {
   const [name, setName] = useState("")
@@ -28,34 +29,42 @@ const Signup = (props) => {
   }
 
   return (
-    <React.Fragment>
+    <>
       <div className="signup">
         <h2>Sign up</h2>
         <div className="body">
           <TextInput
-                label="name"
-                value={name}
-                type="text"
-                onChange={inputName} />
+            label="name"
+            value={name}
+            type="text"
+            onChange={inputName}
+          />
           <TextInput
-                label="email"
-                value={email}
-                type="email"
-                onChange={inputEmail} />
+            label="email"
+            value={email}
+            type="email"
+            onChange={inputEmail}
+          />
           <TextInput
-                label="password"
-                value={password}
-                type="password"
-                onChange={inputPassword} />
+            label="password"
+            value={password}
+            type="password"
+            onChange={inputPassword}
+          />
           <TextInput
-                label="password_confirmation"
-                value={password_confirmation}
-                type="password"
-                onChange={inputPasswordConfirmation} />
-          <button onClick={submitForm}>Submit</button>
+            label="password_confirmation"
+            value={password_confirmation}
+            type="password"
+            onChange={inputPasswordConfirmation}
+          />
+          <div className="spacer" />
+          <Link to="/login">If you have an account, please log in</Link>
+          <div className="btn-group">
+            <PrimaryButton onClick={submitForm}>Submit</PrimaryButton>
+          </div>
         </div>
       </div>
-    </React.Fragment>
+    </>
   )
 }
 

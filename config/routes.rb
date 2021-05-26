@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: 'site#index'
-  get 'home', to: 'site#index'
-  get 'todo', to: 'site#index'
+  get 'calendar', to: 'site#index'
+  get 'lists', to: 'site#index'
   get 'login', to: 'site#index'
   get 'signup', to: 'site#index'
   
