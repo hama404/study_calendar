@@ -153,7 +153,7 @@ const App = () => {
         .then(() => {
           localStorage.removeItem("session")
           setUser(null)
-          toggleDrower(false)
+          toggleDrower(false)()
           setMessage({text: "good bye!"})
           history.push("/")
         })
