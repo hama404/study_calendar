@@ -11,6 +11,7 @@
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "chart.js": "^2.9.4",
     "chart.piecelabel.js": "^0.15.0",
+    "html-react-parser": "^1.2.6",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
     "react-calendar": "^3.4.0",

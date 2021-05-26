@@ -215,7 +215,7 @@ const App = () => {
         setMessage({text: "welcome!!"})
       })
       .catch(err => {
-        setMessage({text: "please login"})
+        setMessage({text: "please login\n(you can login as test user)"})
         console.log(err)
       }
     )

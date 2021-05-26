@@ -24,24 +24,25 @@ Github : [https://github.com/hama404/study_calendar](https://github.com/hama404/
 
 - improve design
 
-  - loading animation
-  - responsive design
   - styled-button for component recycle
-  - devise login page
-  - implement test user
+  - responsive design
+  - loading animation
+  - ~~devise login page~~
+  - ~~implement test user~~
 
 - message component
 
-  - 改行の反映
+  - ~~改行の反映~~
+  - 複数のメッセージに対応
   - error メッセージ対応、色の変更
-
-gem devise_token_auth で web api の認証機能を実装していて、  
-現在はとりあえず認証のトークンを localStrage で管理しているのだが、  
-どこに保存するのが最適なのかを考える。
 
 - javascript polyfill、IE への対応
 
   - closest
+
+gem devise_token_auth で web api の認証機能を実装していて、  
+現在はとりあえず認証のトークンを localStrage で管理しているのだが、  
+どこに保存するのが最適なのかを考える。
 
 ## 詳細
 
@@ -72,6 +73,7 @@ git はコマンドライン使用していたのだが sourcetree を導入し�
   - react-calendar
   - react-icons
   - styled-components
+  - html-react-parser
 
 - MariaDB
 
@@ -112,3 +114,5 @@ git はコマンドライン使用していたのだが sourcetree を導入し�
 - react-icons
 
 - styled-components
+
+- html-react-parser
