@@ -22,18 +22,21 @@ Github : [https://github.com/hama404/study_calendar](https://github.com/hama404/
 
 ## メモ
 
-- improve design
+- リストをユーザーと紐付け
 
-  - responsive design
-  - loading animation
-  - ~~devise login page~~
-  - ~~implement test user~~
-  - ~~styled-button for component recycle~~
+- ログインユーザーのみサイトにアクセス
 
-- message component
+- ファビコン設定
 
+- improve component
+
+  - カレンダー、Todo リスト
+  - loading animation、トランジション
+  - レスポンシブデザイン、メニューを隠す
+  - Forms のバリデーション
+
+  - メッセージの setTimeout
   - error メッセージ対応、色の変更
-  - ~~改行の反映~~
   - 複数のメッセージに対応
 
 - javascript polyfill、IE への対応

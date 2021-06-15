@@ -47,10 +47,12 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+# devise authentication
 gem 'devise'
 gem 'devise_token_auth'
 
 group :production, :staging do
+  # unicorn
   gem 'unicorn'
 end
 
