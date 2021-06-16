@@ -51,8 +51,15 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'devise_token_auth'
 
+# unicorn
 group :production, :staging do
-  # unicorn
   gem 'unicorn'
 end
 
+# rspec test
+group :test do
+  gem 'rspec-rails', '~> 4.1.0'
+  # gem 'capybara', '>= 2.15'
+  gem "factory_bot_rails"
+  gem 'faker'
+end
