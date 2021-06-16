@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get 'lists', to: 'site#index'
   get 'login', to: 'site#index'
   get 'signup', to: 'site#index'
-  
+
   namespace :api do
     namespace :v1 do
       get '/whoami', to: 'sessions#whoami'

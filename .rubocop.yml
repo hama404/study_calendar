@@ -1,0 +1,19 @@
+inherit_from: .rubocop_todo.yml
+AllCops:
+  TargetRubyVersion: 2.5.1
+  Exclude:
+    - bin/*
+    - db/schema.rb
+    - node_modules/**/*
+    - db/migrate/*
+    - vendor/**/*
+  Rails:
+    enabled: true
+AsciiComments:
+  Enabled: false
+Style/FrozenStringLiteralComment:
+  Enabled: false
+Metrics/BlockLength:
+  Exclude:
+    - "spec/**/*"
+    - "config/environments/*"
