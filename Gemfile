@@ -59,7 +59,7 @@ end
 # rspec test
 group :test do
   gem 'rspec-rails', '~> 4.1.0'
-  gem 'capybara', '>= 2.15'
+  # gem 'capybara', '>= 2.15'
   gem "factory_bot_rails"
   gem 'faker'
 end
