@@ -6,7 +6,7 @@ class CreateLists < ActiveRecord::Migration[6.1]
       t.integer :time, null: false
       t.string :color, null: false
       t.boolean :completed, default: false, null: false
-  
+
       t.timestamps
     end
   end

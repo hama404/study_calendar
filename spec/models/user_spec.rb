@@ -4,7 +4,7 @@ RSpec.describe User, type: :model do
   describe '.connection_config' do
     subject { User.connection_config[:database] }
     it 'connect to db' do
-      is_expected.to match("db/test.sqlite3")
+      is_expected.to match('db/test.sqlite3')
       is_expected.not_to match(Rails.application.credentials.db[:database])
     end
   end
