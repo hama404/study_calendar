@@ -3,12 +3,14 @@
 自分の勉強時間を可視化するアプリです。  
 勉強の予定を立てることができます。
 
-URL : [http://54.168.99.68/](http://54.168.99.68/)  
+URL : [http://study-calendar.tk/](http://study-calendar.tk/)  
 Github : [https://github.com/hama404/study_calendar](https://github.com/hama404/study_calendar)
 
 ## 機能一覧
 
 - ログイン、ログアウト機能
+
+  - devise, devise-token-auth を使用して、web api 認証
 
 - 勉強時間の一覧、追加、編集、削除
 
@@ -20,33 +22,6 @@ Github : [https://github.com/hama404/study_calendar](https://github.com/hama404/
 
   - aws ec2, nginx と unicorn と mysql でサーバーを作成
 
-## メモ
-
-- リストをユーザーと紐付け
-
-- ログインユーザーのみサイトにアクセス
-
-- ファビコン設定
-
-- improve component
-
-  - カレンダー、Todo リスト
-  - loading animation、トランジション
-  - レスポンシブデザイン、メニューを隠す
-  - Forms のバリデーション
-
-  - メッセージの setTimeout
-  - error メッセージ対応、色の変更
-  - 複数のメッセージに対応
-
-- javascript polyfill、IE への対応
-
-  - closest
-
-gem devise_token_auth で web api の認証機能を実装していて、  
-現在はとりあえず認証のトークンを localStrage で管理しているのだが、  
-どこに保存するのが最適なのかを考える。
-
 ## 詳細
 
 Ruby on Rails & REACT の Web アプリケーションです。  
@@ -55,7 +30,11 @@ Rails の Devise を使用してログイン機能を実装しています。
 インフラは aws ec2 を使用して nginx と unicorn でサーバーを構築しました。
 
 デザインは react-icons と styled-components で作成し、  
-git はコマンドライン使用していたのだが sourcetree を導入してみた。
+git は CLI と sourcetree で管理をした。
+
+github issue の活用、docker-compose での環境構築、  
+capystrano デプロイ、circleci の導入について、  
+[test-app](https://github.com/hama404/divide-dev-server) で環境構築をしているので、設定の記述から作成して使用することができます。
 
 ### 使用技術
 

@@ -91,7 +91,7 @@ SAMPLE_LISTS = [
     color: 'rgb(103, 58, 183)',
     completed: false
   }
-]
+].freeze
 
 SAMPLE_LISTS.each do |todo|
   List.create(todo)
