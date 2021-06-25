@@ -1,0 +1,53 @@
+version: "3"
+
+services:
+  front:
+    build:
+      context: ./front
+    volumes:
+      - ./front/react:/usr/src/app
+    command: sh -c "yarn start"
+    ports:
+      - 8000:3000
+
+  api:
+    build:
+      context: ./api
+    command: bundle exec puma -C config/puma.rb
+    volumes:
+      - ./api/src:/myapp
+      - ./api/src/vendor/bundle:/myapp/vendor/bundle
+      - public-data:/myapp/public
+      - tmp-data:/myapp/tmp
+      - log-data:/myapp/log
+    ports:
+      - 3000:3000
+    depends_on:
+      - db
+
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_USER: user
+      MYSQL_ROOT_PASSWORD: password
+    ports:
+      - 3306:3306
+    volumes:
+      - db-data:/var/lib/mysql
+
+  web:
+    build:
+      context: ./server
+    volumes:
+      - public-data:/myapp/public
+      - tmp-data:/myapp/tmp
+    ports:
+      - 80:80
+    depends_on:
+      - api
+
+volumes:
+  db-data:
+  public-data:
+  tmp-data:
+  log-data:
