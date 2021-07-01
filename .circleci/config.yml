@@ -1,0 +1,117 @@
+version: 2.1
+
+executors:
+  default:
+    working_directory: ~/webapp
+    docker:
+      - image: circleci/ruby:2.6.5-node
+        environment:
+          BUNDLER_VERSION: 2.1.2
+          RAILS_ENV: test
+          DB_HOST: 127.0.0.1
+          DB_USERNAME: "root"
+          DB_PASSWORD: ""
+      - image: circleci/mysql:5.7
+        environment:
+          MYSQL_ROOT_HOST: "%"
+          MYSQL_ALLOW_EMPTY_PASSWORD: "true"
+
+commands:
+  setup:
+    steps:
+      # bundlerのバージョン２へのアップデート
+      # - run:
+      #     name: Update bundler
+      #     command: gem update bundler
+
+      - run:
+          name: Which bundler?
+          command: bundle -v
+
+  bundle-cache:
+    steps:
+      - restore_cache:
+          keys:
+            - gem-cache-v1-{{ checksum "api/src/Gemfile.lock" }}
+            - gem-cache-v1-
+
+      - run:
+          name: Bundle Install
+          command: bundle check --path vendor/bundle || bundle install --deployment
+
+      - save_cache:
+          key: gem-cache-v1-{{ checksum "api/src/Gemfile.lock" }}
+          paths:
+            - vendor/bundle
+
+  npm-cache:
+    steps:
+      - restore_cache:
+          keys:
+            - yarn-cache-v1-{{ checksum "front/react/yarn.lock" }}
+            - yarn-cache-v1-
+
+      - run:
+          name: Yarn Install
+          command: yarn install --cache-folder ~/.cache/yarn
+
+      - save_cache:
+          key: yarn-cache-v1-{{ checksum "front/react/yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
+
+  connect-db:
+    steps:
+      - run:
+        name: Wait for DB
+        command: dockerize -wait tcp://127.0.0.1:3306 -timeout 90s
+
+      - run:
+          name: Use specific database.yml
+          command: mv config/database.ci.yml config/database.yml
+
+      - run:
+          name: Database setup
+          command: |
+            bin/rails db:create
+            bin/rails db:schema:load --trace
+
+jobs:
+  build:
+    executor: default
+    environment:
+      RAILS_ENV: test
+    steps:
+      - checkout
+      - setup
+
+  test:
+    executor: default
+    environment:
+      RAILS_ENV: test
+    steps:
+      - checkout
+      - setup
+      - bundle-cache
+      - npm-cache
+      - connect-db
+      - run:
+          name: rspec
+          command: bundle exec rspec
+          working_directory: api/src
+
+      - run:
+          name: rubocop
+          command: bundle exec rubocop
+          working_directory: api/src
+
+      - run:
+          name: eslint & prettier
+          command: npm run lint:check
+          working_directory: front/react
+
+workflows:
+  build_and_test:
+    jobs:
+      - build
+      - test
