@@ -18,6 +18,12 @@ Github : [https://github.com/hama404/study_calendar](https://github.com/hama404/
 
 - REACT を使用して SPA 化
 
+- 開発環境
+
+  - github issue の活用
+  - circleci の導入
+  - docker-compose で、frontend と backend を分けて環境構築
+
 - 本番環境
 
   - aws ec2, nginx と unicorn と mysql でサーバーを作成
@@ -31,9 +37,6 @@ Rails の Devise を使用してログイン機能を実装しています。
 
 デザインは react-icons と styled-components で作成し、  
 git は CLI と sourcetree で管理をした。
-
-github issue の活用、circleci の導入、  
-docker-compose で、frontend と backend を分けて環境構築しています。
 
 [test-app](https://github.com/hama404/divide-dev-server) で環境構築をしていて、  
 設定の記述から作成して使用することができます。
