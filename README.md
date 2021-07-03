@@ -32,9 +32,11 @@ Rails の Devise を使用してログイン機能を実装しています。
 デザインは react-icons と styled-components で作成し、  
 git は CLI と sourcetree で管理をした。
 
-github issue の活用、docker-compose での環境構築、  
-capystrano デプロイ、circleci の導入について、  
-[test-app](https://github.com/hama404/divide-dev-server) で環境構築をしているので、設定の記述から作成して使用することができます。
+github issue の活用、circleci の導入、  
+docker-compose で、frontend と backend を分けて環境構築しています。
+
+[test-app](https://github.com/hama404/divide-dev-server) で環境構築をしていて、  
+設定の記述から作成して使用することができます。
 
 ### 使用技術
 
@@ -65,8 +67,10 @@ capystrano デプロイ、circleci の導入について、
 
 - AWS
 
-  - VPC
+  - VPC, subnet
   - EC2
+  - RDS, S3
+  - IAM, iam role
 
 ### 実装した機能
 
@@ -79,13 +83,31 @@ capystrano デプロイ、circleci の導入について、
   - カレンダー表示
   - 円グラフ
 
+### gem
+
+- rspec test
+
+  - 'rspec-rails', '~> 4.1.0'
+  - 'factory_bot_rails'
+  - 'faker'
+
+- rubocop
+
+  - 'rubocop', require: false
+  - 'rubocop-rails'
+
+- devise authentication
+
+  - 'devise', '4.7.3'
+  - 'devise_token_auth'
+
 ### パッケージ
 
 - axios
 
 - react-router-dom: ^5.2.0
 
-- react-calendar"
+- react-calendar
 
 - chart.js: ^2.9.4
 

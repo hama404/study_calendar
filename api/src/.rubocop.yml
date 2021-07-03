@@ -1,0 +1,39 @@
+# inherit_from: .rubocop_todo.yml
+
+AllCops:
+  TargetRubyVersion: 2.5.1
+  Exclude:
+    - bin/*
+    - db/schema.rb
+    - node_modules/**/*
+    - db/migrate/*
+    - vendor/**/*
+  Rails:
+    enabled: true
+
+## and return ( &&, || )
+Style/AndOr:
+  Enabled: false
+
+# frozen_string_literal: true
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+# missing top-level class documentation comment
+Documentation:
+  Enabled: false
+
+# (class, module) nested or compact
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+# # global variables
+# Style/GlobalVars:
+#   Exclude:
+#     - "config/unicorn.conf.rb"
+
+# Block has too many lines (over 25)
+Metrics/BlockLength:
+  Exclude:
+    - "spec/**/*"
+    - "config/environments/*"
