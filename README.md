@@ -26,6 +26,7 @@ Github : [https://github.com/hama404/study_calendar](https://github.com/hama404/
 
 - 本番環境
 
+  - terraform で aws の環境を構築 (vpc, ec2)
   - aws ec2, nginx と unicorn と mysql でサーバーを作成
 
 ## 詳細
@@ -33,7 +34,8 @@ Github : [https://github.com/hama404/study_calendar](https://github.com/hama404/
 Ruby on Rails & REACT の Web アプリケーションです。  
 フロントを REACT で作成して、SPA 化しました。  
 Rails の Devise を使用してログイン機能を実装しています。  
-インフラは aws ec2 を使用して nginx と unicorn でサーバーを構築しました。
+インフラは　 terraform で aws の環境を構築し、  
+aws ec2 を使用して nginx と unicorn でサーバーを構築しました。
 
 デザインは react-icons と styled-components で作成し、  
 git は CLI と sourcetree で管理をした。
@@ -62,11 +64,13 @@ git は CLI と sourcetree で管理をした。
   - styled-components
   - html-react-parser
 
-- MariaDB
+- MariaDB, MySQL
 
 - Nginx
 
 - Unicorn
+
+- Terraform
 
 - AWS
 
